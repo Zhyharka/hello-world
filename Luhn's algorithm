@@ -1,0 +1,42 @@
+import random
+
+def generate(pref, l):
+	number = "" + pref
+	i = 0
+	while i < l - len(pref) - 1:
+		number += str(random.randint(0,9))
+		i += 1
+	print(number)
+	number += checksum(number + "0")
+	return int(number)
+	
+def digits_of(num):
+	return [int(digit) for digit in str(num)]
+
+def checksum(credit_card):
+	ttl = 0
+	digits = digits_of(credit_card)
+	even_digits = digits[-2::-2]
+	odd_digits = digits[-1::-2]
+	if (len(digits) % 2 == 0):
+		ttl = sum(even_digits)
+		for i in odd_digits:
+			ttl += sum(digits_of(2*i))
+	else:
+		ttl = sum(odd_digits)
+		for i in even_digits:
+			ttl += sum(digits_of(2*i))
+	print(ttl)
+	if ttl % 10 == 0:
+		c = 0
+	else:
+		c = 10 - ttl % 10
+	return str(c)
+
+def is_luhn(num):
+	return (checksum(num) == '0')
+	
+credit_card = generate('325476', 15)
+print(credit_card)
+i = is_luhn(credit_card)
+print(i)
