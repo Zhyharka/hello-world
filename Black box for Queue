@@ -1,0 +1,39 @@
+from queue_test import *
+
+def test():
+    q = Queue(1)
+    is_empty = q.empty()
+    assert is_empty
+    is_full = q.full()
+    assert not is_full
+    value = q.dequeue()
+    assert value == None
+    ###
+    succeeded = q.enqueue(10)
+    assert succeeded
+    is_full = q.full()
+    assert is_full
+    is_empty = q.empty()
+    assert not is_empty
+    succeeded = q.enqueue(20)
+    assert not succeeded
+    ###
+    value = q.dequeue()
+    assert value == 10
+    is_full = q.full()
+    assert not is_full
+    is_empty = q.empty()
+    assert is_empty
+    value = q.dequeue()
+    assert value == None
+    ###
+    succeeded = q.enqueue(99999)
+    assert succeeded
+    value = q.dequeue ()
+    assert value == 99999
+    ###
+    w = Queue (20)
+    for i in range(20):
+        succeed = w.enqueue(i)
+        assert succeed
+    return
