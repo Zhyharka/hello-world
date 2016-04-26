@@ -1,0 +1,22 @@
+def test():
+    q = Queue(10)
+    size = q.empty()
+    assert size == True
+    m = q.full()
+    assert m == False
+    for i in range(0,11,1):
+        en = q.enqueue(i)
+        q.checkRep()
+        if i != 10:
+            assert en == True
+        else:
+            assert en == False
+    
+    for i in range(0,11,1):
+        de = q.dequeue()
+        q.checkRep()
+        if i < 10:
+            assert de == i
+        else:
+            assert de == None
+    
