@@ -1,0 +1,9 @@
+def isPrime2(number):  
+    if number == 2:
+        return True
+    if number<=1 or (number%2)==0:
+        return False
+    for check in range(3,int(math.ceil(math.sqrt(number)))):  
+        if (number%check) == 0:  
+            return False
+    return True
