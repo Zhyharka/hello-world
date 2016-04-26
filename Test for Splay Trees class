@@ -1,0 +1,40 @@
+def test():
+    st = SplayTree()
+    assert st
+    e = st.isEmpty()
+    assert e
+    k1 = st.find(2)
+    assert k1 == None
+    mi = st.findMin()
+    ma = st.findMax()
+    assert mi == None and ma == None
+    rm = st.remove(5)
+    assert not rm
+    st.splay(0)
+    el1 = st.insert(5)
+    el1 = st.insert(5)
+    assert not el1 
+    k1 = st.find(5)
+    assert k1 == 5
+    k1 = st.find(2)
+    assert k1 == None
+    mi = st.findMin()
+    ma = st.findMax()
+    assert mi == 5 and ma == 5
+    st.insert(10)
+    st.splay(10)
+    st.insert(0)
+    st.remove(10)
+    st.splay(5)
+    st.splay(0)
+    st.remove(5)
+    st.remove(5)
+    st.remove(0)
+    
+    assert st.isEmpty()
+    st.insert(5)
+    st.insert(0)
+    st.insert(10)
+    mi = st.findMin()
+    ma = st.findMax()
+    assert mi == 0 and ma == 10
